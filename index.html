@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link rel="stylesheet" type="text/css" href="sass/scss.css"/>
+		<link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.css"/>
+		<script src="js/vue.min.js"></script>
+		<script src="js/vue-router.min.js"></script>
+		<script src="js/vue-resource.js"></script>
+		<script src="bootstrap/js/jquery-3.1.1.min.js"></script>
+		<script src="bootstrap/js/bootstrap.js"></script>
+	</head>
+	<body>
+		<div id="app">
+			<header>
+				<ul>
+					<li><返回</li>
+					<li>一米鲜</li>
+					<li>
+						<ol>
+							<li></li>
+							<li></li>
+							<li></li>
+						</ol>
+					</li>
+				</ul>
+				<p>配送至：<span>北京八维研修学院</span><span class="glyphicon glyphicon-triangle-bottom"></span></p>
+			</header>
+			
+			<div>
+				<router-view></router-view>
+			</div>
+			<footer>
+				<ul>
+					<li><router-link to="/home"><img src="img/footer1.png"/><p>商城</p></router-link></li>
+					<li><router-link to="/sell"><img src="img/footer2.png"/><p>促销</p></router-link></li>
+					<li><router-link to=""><img src="img/footercenter.png"/><p></p></router-link></li>
+					<li><router-link to="/shop"><img src="img/footer3.png"/><p>购物车</p></router-link></li>
+					<li><router-link to="/mine"><img src="img/footer4.png"/><p>我的</p></router-link></li>
+				</ul>
+			</footer>
+		</div>	
+		
+		<template id="home">
+			<nav class="nav">
+				<div>
+					<ul class="uls">
+						<li><router-link to="/home/coun"><p>国产水果</p><p>国民最爱</p></router-link></li>
+						<li><router-link to="/home/wide"><p>进口水果</p><p>洋气十足</p></router-link></li>
+						<li><router-link to="/home/ice"><p>冷链直达</p><p>需单独下单</p></router-link></li>
+						<li><router-link to="/home/sec"><p>秒杀闪购</p><p>11点20点</p></router-link></li>
+						<li><router-link to="/home/hui"><p>特惠换购</p><p>0.99元起</p></router-link></li>
+						<li><router-link to="/home/nut"><p>干果零食</p><p>根本停不下来</p></router-link></li>
+						<li><router-link to="/home/supe"><p>超值套餐</p><p>一键齐全</p></router-link></li>
+						<li><router-link to="/home/thin"><p>工具类</p><p></p></router-link></li>
+					</ul>
+					<router-view></router-view>
+				</div>
+			</nav>
+		</template>
+		<template id="sell">
+			<h1>促销</h1>
+		</template>
+		<template id="shop">
+			<ul class="cart">
+				<li v-for="(val,key) in goods" class="li1">
+					<img :src="val.imgs"/>
+					<div>
+						<p>{{ val.p1 }}</p>
+						<p>{{ val.p2 }}</p>
+						<p><button @click="little(val,val.id)">-</button><span>{{ val.number }}</span><button @click="more(val)">+</button></p>
+						<p><span>{{ val.p3 }}</span></p>
+					</div>
+				</li>
+				<li>
+					<p>总价：<span>￥{{ zj }}</span></p>
+					<p><button>去结算</button></p>
+				</li>
+			</ul>
+			<!--<h1>购物车</h1>-->
+		</template>
+		<template id="mine">
+			<h1>我的</h1>
+		</template>
+		<template id="coun">
+			<ul class="home">
+				<li v-for="(val,key) in arrs.twos">
+					<img :src="val.imgs"/>
+					<div>
+						<p>{{ val.p1 }}</p>
+						<p>{{ val.p2 }}</p>
+						<p><span>{{ val.p3 }}</span><button @click="add(key)">+</button></p>
+					</div>
+				</li>
+			</ul>
+		</template>
+		<template id="wide">
+			<ul class="home">
+				<li v-for="(val,key) in arrs.ones">
+					<img :src="val.imgs"/>
+					<div>
+						<p>{{ val.p1 }}</p>
+						<p>{{ val.p2 }}</p>
+						<p><span>{{ val.p3 }}</span><button @click="add(key)">+</button></p>
+					</div>
+				</li>
+			</ul>
+			<!--<h1>进口水果</h1>-->
+		</template>
+		<template id="ice">
+			<h1>冷链直达</h1>
+		</template>
+		<template id="sec">
+			<h1>秒杀闪购</h1>
+		</template>
+		<template id="hui">
+			<h1>特惠换购</h1>
+		</template>
+		<template id="nut">
+			<h1>干果零食</h1>
+		</template>
+		<template id="supe">
+			<h1>超值套餐</h1>
+		</template>
+		<template id="thin">
+			<h1>工具类</h1>
+		</template>
+		
+		
+		<script src="index.js"></script>
+	</body>
+</html>
